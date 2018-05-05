@@ -1,0 +1,72 @@
+<div class="logo">
+    <a href="https://www.creative-tim.com" class="simple-text">
+        <div class="logo-img">
+            <img src="/assets/img/angular2-logo-red.png"/>
+        </div>
+        Ng Material 
+    </a>
+</div>
+<div class="sidebar-wrapper">
+    <div class="user">
+        <div class="photo">
+                <img src="{{photoURL || '/assets/img/default-avatar.png'}}">
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                        {{displayName}} 
+                        <!-- <b class="caret"></b> -->
+                    </span>
+                </a>
+                <div class="clearfix"></div>
+                <!-- <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-mini"> MP </span>
+                                <span class="sidebar-normal"> My Profile </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-mini"> EP </span>
+                                <span class="sidebar-normal"> Edit Profile </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-mini"> S </span>
+                                <span class="sidebar-normal"> Settings </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+    </div>
+    <div class="nav-container">
+        <ul class="nav">
+            <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+                <a *ngIf="menuItem.submenu.length==0 && (menuItem.roles.includes(role) || menuItem.roles.length==0 || role=='admin')" routerLink="/{{menuItem.path}}">
+                    <i class="material-icons">{{menuItem.icon}}</i>
+                    <p>{{menuItem.title}}</p>
+                </a>
+                <a *ngIf="menuItem.submenu.length>0 && (menuItem.roles.includes(role) || menuItem.roles.length==0 || role=='admin')" data-toggle="collapse" href="#{{menuItem.path}}" class="collapsed" aria-expanded="false">
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        <p>{{menuItem.title}}<b class="caret"></b></p>
+                </a>
+
+                <div *ngIf="menuItem.submenu.length>0 && (menuItem.roles.includes(role) || menuItem.roles.length==0 || role=='admin')" class="collapse" id="{{menuItem.path}}" aria-expanded="false" style="height: 0px;">
+                        <ul class="nav">
+                                <li *ngFor="let submenu of menuItem.submenu" [routerLinkActive]="['active']" class="{{submenu.class}}">
+                                        <a routerLink="/{{submenu.path}}">
+                                            <!-- <i class="material-icons">{{submenu.icon}}</i> -->
+                                            <span class="sidebar-mini">B</span>
+                                            <span class="sidebar-normal">{{submenu.title}}</span>
+                                        </a>
+                                </li>
+                            </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

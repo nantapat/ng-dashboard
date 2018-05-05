@@ -1,0 +1,140 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row vertical-center">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header" data-background-color="red">
+                            <h4 class="title">Edit Profile</h4>
+                            <p class="category">Complete your profile</p>
+                        </div>
+                        <div class="card-content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                                                <mat-autocomplete #auto="matAutocomplete">
+                                                    <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                                                        <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" />
+                                                        <span>{{ state.name }}</span> |
+                                                        <small>Population: {{state.population}}</small>
+                                                    </mat-option>
+                                                </mat-autocomplete>
+                                            </mat-form-field>
+                                                    
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Username">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Email Address">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Fist Name">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Last Name">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-black label-floating is-empty">
+                                            <mat-form-field>
+                                                <textarea matInput placeholder="Address"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group form-black label-floating is-empty">
+                                           <mat-form-field>
+                                                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-black label-floating is-empty">
+                                                <mat-form-field>
+                                                        <mat-select placeholder="Favorite food">
+                                                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                                                            {{ food.viewValue }}
+                                                          </mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
+                                               
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-black label-floating is-empty">
+                                                <mat-form-field>
+                                                        <mat-select placeholder="Toppings" multiple>
+                                                          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                                                        </mat-select>
+                                                </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>About Me</label>
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <mat-form-field>
+                                                        <textarea matInput rows="5" placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                                    </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <mat-checkbox>Check me!</mat-checkbox>
+                                <mat-radio-group>
+                                    <mat-radio-button value="1">Option 1</mat-radio-button>
+                                    <mat-radio-button value="2">Option 2</mat-radio-button>
+                                </mat-radio-group>
+                                <mat-slider></mat-slider>
+                                <mat-slide-toggle>Slide me!</mat-slide-toggle>
+                                <div></div>
+                                
+        
+                                    <mat-placeholder>Start DateTime</mat-placeholder>
+                                    <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix></mat-datetimepicker-toggle>
+                                    <mat-datetimepicker #datetimePicker type="datetime" [startAt]="start" startView="month" openOnFocus="true" timeInterval="5"></mat-datetimepicker>
+                                    <input matInput [min]="today" [max]="tomorrow" [matDatetimepicker]="datetimePicker" required autocomplete="false">
+                                <button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        

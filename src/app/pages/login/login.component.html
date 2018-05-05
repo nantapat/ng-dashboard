@@ -1,0 +1,80 @@
+<div class="wrapper-full-page wrapper">
+    <div class="full-page">
+        <div class="content">
+            <div class="container">
+                <div class="row" *ngIf="!isAuthenticated()">
+                    <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                        <div class="card login-card">
+                            <div class="card-header text-center" data-background-color="rose">
+                                <i class="material-icons" style="font-size: 60px;">lock</i>
+                                <h4 class="card-title">Restricted Area</h4>
+                            </div>
+                            <div class="card-content">
+                                <form (submit)="login()">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">face</i>
+                                    </span>
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label">Username</label>
+                                        <input class="form-control" type="email" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label">Password</label>
+                                        <input class="form-control" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required>
+                                        
+                                    </div>
+                                </div>
+                                <div class="input-group" *ngIf="globals.loginLoad">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                                    </span>
+                                    <div class="form-group ">
+                                        <label>{{globals.loginTextStatus}}</label>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn pull-right" data-background-color="rose">Login</button>
+                                <div class="clearfix"></div>
+                                
+                                
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="isAuthenticated()">
+                    <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <img class="img" src="{{ user.photoURL || '/assets/img/default-avatar.png' }}">
+                            </div>
+                            <div class="card-content">
+                                <h6 class="category text-gray">Login as</h6>
+                                <h4 class="card-title" style="color: #FFF; font-weight: bold;text-transform: uppercase;">{{ user.displayName || user.email }}</h4>
+                                <a class="btn btn-info btn-round" (click)="alreadyLogin()">Continue</a>
+                                <br />
+                                <br />
+                                <a href="#" (click)="logout()" style="color: white; font-size: 1.1rem">Sign in with another account</a>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="full-page-background" style="background-image: url(/assets/img/bg.jpg)"></div>
+    </div>
+</div>
+<!-- <div class="wrapper-full-page wrapper">
+    <div class="loader">
+      <svg class="circular" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+</div> -->
